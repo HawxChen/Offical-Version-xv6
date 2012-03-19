@@ -7,7 +7,7 @@
 #include "traps.h"
 #include "x86.h"
 
-#define IO_TIMER1       0x040           // 8253 Timer #1
+#define IO_TIMER1       0x040   // 8253 Timer #1
 
 // Frequency of all three count-down timers;
 // (TIMER_FREQ/freq) is the appropriate count
@@ -22,11 +22,11 @@
 #define TIMER_16BIT     0x30    // r/w counter 16 bits, LSB first
 
 void
-timerinit(void)
+timerinit (void)
 {
-  // Interrupt 100 times/sec.
-  outb(TIMER_MODE, TIMER_SEL0 | TIMER_RATEGEN | TIMER_16BIT);
-  outb(IO_TIMER1, TIMER_DIV(100) % 256);
-  outb(IO_TIMER1, TIMER_DIV(100) / 256);
-  picenable(IRQ_TIMER);
+    // Interrupt 100 times/sec.
+    outb (TIMER_MODE, TIMER_SEL0 | TIMER_RATEGEN | TIMER_16BIT);
+    outb (IO_TIMER1, TIMER_DIV (100) % 256);
+    outb (IO_TIMER1, TIMER_DIV (100) / 256);
+    picenable (IRQ_TIMER);
 }
